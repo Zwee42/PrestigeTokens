@@ -45,6 +45,7 @@ public class ConfigManager {
         plugin.saveConfig();
     }
 
+
     public static class Config {
         private FileConfiguration config;
         private final File configFile;

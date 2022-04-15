@@ -14,20 +14,20 @@ import org.bukkit.inventory.ItemStack;
 
 public class PurchaseListener implements Listener {
 
-	private final ConfigManager.Config shopConfig = ConfigManager.getFile("Shop");
+	private final ConfigManager.Config shopConfig = ConfigManager.getFile("shop");
 	TokenManager tokenManager = TokenManager.getInstance();
 
-	private void BuyItem(Player player, InventoryClickEvent event, String itemNum) {
+	private void BuyItem(Player player, String itemNum) {
 
-		final double cost =  shopConfig.getConfig().getDouble("Shop."+itemNum+".Cost");
-
+		final double cost =  shopConfig.getConfig().getDouble("Shop.Content."+itemNum+".Cost");
 
 		if (cost > tokenManager.getPlayerTokens(player)) {
 			player.sendMessage(Colour.colour(Message.getMessage("NOTENOUGHTOKENS")));
+			return;
 		}
 
-		final String itemName = shopConfig.getConfig().getString("Shop."+itemNum+".DisplayName");
-		final String command = shopConfig.getConfig().getString("Shop." + itemNum + ".command").replace("%player%", player.getName());
+		final String itemName = shopConfig.getConfig().getString("Shop.Content."+itemNum+".DisplayName");
+		final String command = shopConfig.getConfig().getString("Shop.Content." + itemNum + ".Command").replace("%player%", player.getName());
 
 		tokenManager.takePlayerTokens(player, cost);
 		player.sendMessage(Colour.colour(Message.getMessage("ONBUY").replace("%bought_item%", itemName).replace("%price%", cost+"")));
@@ -43,16 +43,16 @@ public class PurchaseListener implements Listener {
 
 		Player player = (Player) e.getWhoClicked();
 
-		if (!title.equals(shopConfig.getConfig().getString("Shop.Name")) || (item == null) || !e.isLeftClick()) return;
+		if (!title.equals(shopConfig.getConfig().getString("Shop.Name")) || item == null) return;
 
 		e.setCancelled(true);
 
-		for(String shopItemNum : shopConfig.getConfig().getConfigurationSection("Shop").getKeys(false)) {
+		for(String shopItemNum : shopConfig.getConfig().getConfigurationSection("Shop.Content").getKeys(false)) {
 
-			int slot = shopConfig.getConfig().getInt("pShop." + shopItemNum + ".slot");
+			int slot = shopConfig.getConfig().getInt("Shop.Content." + shopItemNum + ".Slot");
 
 			if(e.getSlot() == slot) {
-				BuyItem(player, e, shopItemNum);
+				BuyItem(player, shopItemNum);
 				return;
 			}
 		}

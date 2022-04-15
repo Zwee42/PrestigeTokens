@@ -1,12 +1,7 @@
 package me.zwee.prestigetokens.commands;
 
 
-import lombok.Getter;
-import me.zwee.prestigetokens.PrestigeTokens;
-import me.zwee.prestigetokens.commands.subcommands.ShopCommand;
-import me.zwee.prestigetokens.commands.subcommands.TokensBalanceCommand;
-import me.zwee.prestigetokens.commands.subcommands.TokensGiveCommand;
-import me.zwee.prestigetokens.commands.subcommands.TokensRemoveCommand;
+import me.zwee.prestigetokens.commands.subcommands.*;
 import me.zwee.prestigetokens.utils.Colour;
 import me.zwee.prestigetokens.utils.ConfigManager;
 import me.zwee.prestigetokens.utils.Message;
@@ -14,13 +9,14 @@ import me.zwee.prestigetokens.utils.commands.BaseCommand;
 import me.zwee.prestigetokens.utils.commands.CommandManager;
 import me.zwee.prestigetokens.utils.commands.SubCommand;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 
 import java.util.Arrays;
 import java.util.List;
 
 
 public class PrestigeTokensCommand {
-    private ConfigManager.Config messageConfig = ConfigManager.getFile("messages");
+    private final ConfigManager.Config messageConfig = ConfigManager.getFile("messages");
     public void RegisterCommand(){
         CommandManager.AddBaseCommand(baseCommand);
     }
@@ -28,8 +24,8 @@ public class PrestigeTokensCommand {
    private final BaseCommand baseCommand = new BaseCommand() {
         @Override
         public void onCommand(Player player, String[] args) {
-            messageConfig.getConfig().getStringList("HELP_MESSAGE")
-                    .forEach(x -> player.sendMessage(Colour.colour(x)));
+            messageConfig.getConfig().getStringList("Messages.HELP_MESSAGE")
+                    .forEach(line -> player.sendMessage(Colour.colour(line)));
         }
 
         @Override
@@ -47,15 +43,18 @@ public class PrestigeTokensCommand {
             return Arrays.asList(
                     new TokensBalanceCommand().subCommand,
                     new TokensGiveCommand().subCommand,
-                    new ShopCommand().subCommand,
-                    new TokensRemoveCommand().subCommand
+                    new TokensRemoveCommand().subCommand,
+                    new PluginReloadCommand().subCommand,
+                    new ShopCommand().subCommand
                     );}
 
         @Override
         public String[] aliases() {
             return new String[]{
                     "prestigetokens",
-                    "ptokens"
+                    "prestigetoken",
+                    "ptokens",
+                    "ptoken"
             };
         }
     };

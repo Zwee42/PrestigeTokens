@@ -1,44 +1,50 @@
 Shop:
   Name: Prestige Shop
   Filler:
-    DisplayName: ""
+    DisplayName: ''
     Material: STAINED_GLASS_PANE
     Data: 15
     Lore:
-      - ""
-  1: 
-    DisplayName: "&fCrate Key"
-    Material: TRIPWIRE_HOOK
-    Description: "Cost: 30 pTokens"
-    cost: 30
-    command: cc give p basic 1 %player%
-    slot: 20
-  2:
-    DisplayName: "&6Monthycrate"
-    Material: ENDER_CHEST
-    Description: "Cost: 100 pTokens"
-    cost: 100
-    command: msg %player% mc
-    slot: 22
-  3:
-    DisplayName: "&4Lucifer Kit"
-    Material: DIAMOND_HELMET
-    Description: "Cost: 10 pTokens"
-    cost: 10
-    command: kit notch %player%
-    slot: 24
-  4:
-    DisplayName: "&cSatan Gkit PERMANENT"
-    Material: DIAMOND
-    Description: "Cost: 50 pTokens"
-    cost: 50
-    command: msg %player% gkit
-    slot: 30
-  5:
-    DisplayName: "&6Gold Robot"
-    Material: MONSTER_EGG
-    Data: 0
-    Description: "Cost: 25 pTokens"
-    cost: 25
-    command: msg %player% robot 
-    slot: 32
+      - ''
+  Content:
+    '1':
+      DisplayName: '&fCrate Key'
+      Material: TRIPWIRE_HOOK
+      Description:
+      - 'Cost: 30 pTokens'
+      Cost: 30
+      Command: cc give p basic 1 %player%
+      Slot: 20
+    '2':
+      DisplayName: '&6Monthycrate'
+      Material: ENDER_CHEST
+      Description:
+      - 'Cost: 100 pTokens'
+      Cost: 100
+      Command: msg %player% mc
+      Slot: 22
+    '3':
+      DisplayName: '&4Lucifer Kit'
+      Material: DIAMOND_HELMET
+      Description:
+      - 'Cost: 10 pTokens'
+      Cost: 10
+      Command: kit notch %player%
+      Slot: 24
+    '4':
+      DisplayName: '&cSatan Gkit PERMANENT'
+      Material: DIAMOND
+      Description:
+      - 'Cost: 50 pTokens'
+      Cost: 50
+      Command: msg %player% gkit
+      Slot: 30
+    '5':
+      DisplayName: '&6Gold Robot'
+      Material: MONSTER_EGG
+      Data: 0
+      Description:
+      - 'Cost: 25 pTokens'
+      Cost: 25
+      Command: msg %player% robot
+      Slot: 32

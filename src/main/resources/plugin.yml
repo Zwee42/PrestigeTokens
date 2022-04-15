@@ -2,12 +2,19 @@ name: PrestigeTokens
 version: 1.2.6
 main: me.zwee.prestigetokens.PrestigeTokens
 author: ZweeDaLegend
-depend: [PrisonRanksX]
+softdepend:
+  - PrisonRanksX
+  - UltraPrisonCore
 
 commands: 
     pt:
       usage: /prestigetokens
       description: opens the virtual prestigeshop.
+      aliases:
+        - ptokens
+        - ptoken
+        - prestigetoken
+        - prestigetokens
 
 
       

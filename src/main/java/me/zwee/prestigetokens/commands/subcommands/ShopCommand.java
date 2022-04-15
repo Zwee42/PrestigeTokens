@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 public class ShopCommand {
 
     public final SubCommand subCommand = new SubCommand() {
-        ShopGUI gui = new ShopGUI();
+        private final ShopGUI gui = new ShopGUI();
 
         @Override
         public void onCommand(Player player, String[] args) {
