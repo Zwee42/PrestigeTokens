@@ -6,6 +6,7 @@ import me.zwee.prestigetokens.TokenManager;
 import me.zwee.prestigetokens.utils.Colour;
 import me.zwee.prestigetokens.utils.Message;
 import me.zwee.prestigetokens.utils.commands.SubCommand;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public class TokensBalanceCommand {
@@ -14,8 +15,16 @@ public class TokensBalanceCommand {
     public final SubCommand subCommand = new SubCommand() {
         @Override
         public void onCommand(Player player, String[] args) {
-            player.sendMessage(Colour.colour(Message.getMessage("PLAYER_BALANCE"))
-                    .replace("%amount%" ,String.valueOf(tokenManager.getPlayerTokens(player))));
+            if(args.length == 1){
+                Player targetPlayer = Bukkit.getPlayer(args[0]);
+                player.sendMessage(Message.getMessage("BALANCE_OTHER")
+                        .replace("%player%" , targetPlayer.getName())
+                        .replace("%amount%" , tokenManager.getPlayerTokens(targetPlayer) + ""));
+            }else{
+                player.sendMessage(Colour.colour(Message.getMessage("PLAYER_BALANCE"))
+                        .replace("%amount%" ,String.valueOf(tokenManager.getPlayerTokens(player))));
+            }
+
         }
 
         @Override

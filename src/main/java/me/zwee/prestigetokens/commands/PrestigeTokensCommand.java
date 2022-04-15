@@ -7,6 +7,8 @@ import me.zwee.prestigetokens.commands.subcommands.ShopCommand;
 import me.zwee.prestigetokens.commands.subcommands.TokensBalanceCommand;
 import me.zwee.prestigetokens.commands.subcommands.TokensGiveCommand;
 import me.zwee.prestigetokens.commands.subcommands.TokensRemoveCommand;
+import me.zwee.prestigetokens.utils.Colour;
+import me.zwee.prestigetokens.utils.ConfigManager;
 import me.zwee.prestigetokens.utils.Message;
 import me.zwee.prestigetokens.utils.commands.BaseCommand;
 import me.zwee.prestigetokens.utils.commands.CommandManager;
@@ -18,7 +20,7 @@ import java.util.List;
 
 
 public class PrestigeTokensCommand {
-
+    private ConfigManager.Config messageConfig = ConfigManager.getFile("messages");
     public void RegisterCommand(){
         CommandManager.AddBaseCommand(baseCommand);
     }
@@ -26,7 +28,8 @@ public class PrestigeTokensCommand {
    private final BaseCommand baseCommand = new BaseCommand() {
         @Override
         public void onCommand(Player player, String[] args) {
-            player.sendMessage(Message.getMessage("HELP_MESSAGE"));
+            messageConfig.getConfig().getStringList("HELP_MESSAGE")
+                    .forEach(x -> player.sendMessage(Colour.colour(x)));
         }
 
         @Override

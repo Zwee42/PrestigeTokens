@@ -15,4 +15,5 @@ Messages:
   TOKENS_REMOVED: "&2you have removed %amount% pt from %player%"
   TOKENS_RECEIVED: "&2You received %amount% pTokens!"
   PLAYER_BALANCE: "&7You have %amount% pTokens!"
+  BALANCE_OTHER: "&7%player%'s : %amount% pTokens"
   ONBUY: "&2You bought a(n) %bought_item% for %price% pTokens!"
