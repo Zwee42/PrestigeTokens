@@ -23,6 +23,8 @@ public class ConfigManager {
 
     public static Config getFile(String configFileName) { return configs.get(configFileName); }
 
+    public static List<Config> getFiles(){ return new ArrayList<>(configs.values()); }
+
     public void RegisterConfigs(){
 
             if (!plugin.getDataFolder().exists()) {

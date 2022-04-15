@@ -3,9 +3,11 @@ package me.zwee.prestigetokens.commands;
 
 import lombok.Getter;
 import me.zwee.prestigetokens.PrestigeTokens;
+import me.zwee.prestigetokens.commands.subcommands.ShopCommand;
 import me.zwee.prestigetokens.commands.subcommands.TokensBalanceCommand;
 import me.zwee.prestigetokens.commands.subcommands.TokensGiveCommand;
 import me.zwee.prestigetokens.commands.subcommands.TokensRemoveCommand;
+import me.zwee.prestigetokens.utils.Message;
 import me.zwee.prestigetokens.utils.commands.BaseCommand;
 import me.zwee.prestigetokens.utils.commands.CommandManager;
 import me.zwee.prestigetokens.utils.commands.SubCommand;
@@ -24,7 +26,7 @@ public class PrestigeTokensCommand {
    private final BaseCommand baseCommand = new BaseCommand() {
         @Override
         public void onCommand(Player player, String[] args) {
-
+            player.sendMessage(Message.getMessage("HELP_MESSAGE"));
         }
 
         @Override
@@ -42,6 +44,7 @@ public class PrestigeTokensCommand {
             return Arrays.asList(
                     new TokensBalanceCommand().subCommand,
                     new TokensGiveCommand().subCommand,
+                    new ShopCommand().subCommand,
                     new TokensRemoveCommand().subCommand
                     );}
 

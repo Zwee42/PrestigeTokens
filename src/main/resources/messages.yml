@@ -1,4 +1,14 @@
 Messages:
+  HELP_MESSAGE:
+    - "&f/pt ---- show you this message"
+    - "&f/pt shop ---- open the pt shop"
+    - "&f/pt bal ---- show your balance"
+    - ""
+    - "&7Admin commands:"
+    - ""
+    - "&7/pt give (player) (amount) ---- give tokens to someone"
+    - "&7/pt remove (player) (amount) ---- remove tokens from someone"
+  RELOAD: "&f you have reloaded the configuration files"
   NOPERMISSION: "&cYou do not have permission to execute this command!"
   PLAYERNOTFOUND: "&cPlayer not found"
   NOTENOUGHTOKENS: "&cYou do not have enough pTokens!"
